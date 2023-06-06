@@ -1,5 +1,7 @@
 package edu.learn.rest.endpoints;
 
+import java.time.Instant;
+
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -13,6 +15,6 @@ public class AppInfoEndpoint {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String hello(){
-        return "Hello World";
+        return "Hello World at " + Instant.now();
     }
 }
