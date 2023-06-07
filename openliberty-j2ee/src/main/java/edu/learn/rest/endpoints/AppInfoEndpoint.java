@@ -11,10 +11,10 @@ import jakarta.ws.rs.core.MediaType;
 @RequestScoped
 @Path("/app")
 public class AppInfoEndpoint {
-    @Path("/hello")
+    @Path("/status")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String hello(){
-        return "Hello World at " + Instant.now();
+    public String serverStatus(){
+        return "Server response at " + Instant.now();
     }
 }
