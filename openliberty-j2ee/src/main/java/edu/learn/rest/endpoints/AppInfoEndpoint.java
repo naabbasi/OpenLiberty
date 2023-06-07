@@ -11,10 +11,18 @@ import jakarta.ws.rs.core.MediaType;
 @RequestScoped
 @Path("/app")
 public class AppInfoEndpoint {
+    private static final Instant CURRENT_DATE_TIME = Instant.now();
+
     @Path("/status")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String serverStatus(){
-        return "Server response at " + Instant.now();
+    public InnerAppInfoEndpoint serverStatus(){
+        var innerAppInfoEndpoint = new InnerAppInfoEndpoint("Server is up and running", CURRENT_DATE_TIME);
+        return innerAppInfoEndpoint;
     }
+
+    /**
+     * InnerAppInfoEndpoint
+     */
+    public record InnerAppInfoEndpoint(String message, Instant applicationUpDateTime) { }
 }
