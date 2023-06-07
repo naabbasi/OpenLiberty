@@ -24,7 +24,5 @@ public class AppInfoEndpoint {
     /**
      * InnerAppInfoEndpoint
      */
-    public record InnerAppInfoEndpoint(String message, Instant applicationUpDateTime) {
-        
-    }
+    public record InnerAppInfoEndpoint(String message, Instant applicationUpDateTime) { }
 }
