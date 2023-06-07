@@ -1,0 +1,24 @@
+version: '3.1'
+
+services:
+  postgres:
+    image: postgres:15.2-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: p@ssw0rd
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_dev:/var/lib/postgresql/data
+      
+volumes:
+  postgres_dev:
+  # mysql:
+  #   image: mysql:8.0.3
+  #   environment:
+  #     - MYSQL_USER=postgres
+  #     - MYSQL_PASSWORD=Password1
+  #     - MYSQL_DATABASE=docker_compose
+  #   ports:
+  #     - "3306:3306"
