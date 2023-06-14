@@ -1,6 +1,5 @@
 package edu.learn.services;
 
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import edu.learn.entities.Customer;
@@ -13,6 +12,6 @@ public class CustomerService {
     private final CustomerRepository customerRepository;
 
     public Iterable<Customer> all() {
-        return this.customerRepository.findAll(Sort.unsorted());
+        return this.customerRepository.findAll();
     }
 }
