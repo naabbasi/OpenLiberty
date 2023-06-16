@@ -36,7 +36,12 @@ public class DataSourceConfiguration {
     public DataSource postgresDataSource() {
         DatabaseConnectionInfo postgresDbProperties = this.applicationProperties.getExternal().getPostgresDatabase();
         try {
-            return (DataSource) new JndiTemplate().lookup(postgresDbProperties.getJndiName());
+            DataSource jndiDataSource = (DataSource) new JndiTemplate().lookup(postgresDbProperties.getJndiName());
+            System.out.println("#######################################");
+            System.out.println("Production Database");
+            System.out.println("#######################################");
+            System.out.println(jndiDataSource);
+            return jndiDataSource;
         } catch (NamingException e) {
             e.printStackTrace();
         }
@@ -63,7 +68,7 @@ public class DataSourceConfiguration {
     }
 
     @Bean(name = "postgresTransactionManager")
-    public PlatformTransactionManager todosTransactionManager(@Qualifier("postgresEntityManagerFactory") EntityManagerFactory postgresEntityManagerFactory) {
+    public PlatformTransactionManager postgresTransactionManager(@Qualifier("postgresEntityManagerFactory") EntityManagerFactory postgresEntityManagerFactory) {
         return new JpaTransactionManager(Objects.requireNonNull(postgresEntityManagerFactory));
     }
 }

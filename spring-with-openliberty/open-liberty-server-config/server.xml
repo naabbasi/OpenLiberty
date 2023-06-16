@@ -45,12 +45,13 @@
     <variable name="com.ibm.ws.webcontainer.invokeFlushAfterService" value="false" />
 
     <library id="postgresLib">
-        <fileset  dir="/disk1/dev/servers/Jakarta2EE/jakarta2ee-openliberty/jdbcLibs/" includes="postgresql-42.6.0.jar" />
+        <fileset dir="/disk1/dev/servers/Jakarta2EE/jakarta2ee-openliberty/jdbcLibs/"
+            includes="postgresql-42.6.0.jar" />
     </library>
 
     <dataSource id="postgresqlDataSource" jndiName="jdbc/SpringBootAppPostgres">
         <jdbcDriver libraryRef="postgresLib" />
-        <properties.postgresql serverName="localhost" portNumber="5432" type="javax.sql.DataSource"
+        <properties.postgresql serverName="localhost" portNumber="5432"
             databaseName="postgres"
             user="postgres" password="p@ssw@rd" />
     </dataSource>

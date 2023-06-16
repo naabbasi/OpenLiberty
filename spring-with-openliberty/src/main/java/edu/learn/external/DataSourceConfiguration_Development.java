@@ -44,10 +44,15 @@ public class DataSourceConfiguration_Development {
         dataSourceProperties.setPassword(postgresDbProperties.getPassword());
         //dataSourceProperties.getXa().setDataSourceClassName(postgresDbProperties.getDriverClassName());
         
-        return dataSourceProperties
-                .initializeDataSourceBuilder()
+        DataSource jdbcDataSource = dataSourceProperties.initializeDataSourceBuilder()
                 .type(HikariDataSource.class)
                 .build();
+
+        System.out.println("#######################################");
+        System.out.println("Development Database");
+        System.out.println("#######################################");
+        System.out.println(jdbcDataSource);
+        return jdbcDataSource;
     }
 
     @Bean(name = "postgresEntityManagerFactory")
