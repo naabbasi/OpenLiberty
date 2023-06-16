@@ -3,6 +3,7 @@ package edu.learn;
 import javax.naming.InitialContext;
 import javax.naming.NameClassPair;
 import javax.naming.NamingEnumeration;
+import javax.naming.NoInitialContextException;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -20,13 +21,17 @@ public class SpringWithOpenlibertyApplication {
 			System.out.println(applicationProperties.getInternal().getHostname());
 			System.out.println(applicationProperties.getExternal().getPostgresDatabase().getUrl());
 
-			InitialContext ctx = new InitialContext();
-			NamingEnumeration<NameClassPair> list = ctx.list("jdbc");
-			while (list.hasMore()) {
-				NameClassPair nameClassPair = list.next();
-				System.out.println(nameClassPair.getName());
-				System.out.println("isRelative: " + nameClassPair.isRelative());
-				System.out.println(nameClassPair);
+			try {
+				InitialContext ctx = new InitialContext();
+				NamingEnumeration<NameClassPair> list = ctx.list("jdbc");
+				while (list.hasMore()) {
+					NameClassPair nameClassPair = list.next();
+					System.out.println(nameClassPair.getName());
+					System.out.println("isRelative: " + nameClassPair.isRelative());
+					System.out.println(nameClassPair);
+				}
+			} catch (NoInitialContextException nie) {
+				nie.printStackTrace();
 			}
 		};
 	}

@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>edu.learn</groupId>
 	<artifactId>spring-with-openliberty</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>war</packaging>
 	<name>spring-with-openliberty</name>
 	<description>Demo project for Spring Boot</description>
@@ -29,17 +29,16 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-configuration-processor</artifactId>
 		</dependency>
 
 		<dependency>
@@ -88,6 +87,31 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+
+			<!-- To run application with open liberty -->
+			<!-- mvn clean liberty:dev -->
+			<plugin>
+				<groupId>io.openliberty.tools</groupId>
+				<artifactId>liberty-maven-plugin</artifactId>
+				<version>3.7.1</version>
+				<!-- <configuration>
+					<appsDirectory>apps</appsDirectory>
+					<installAppPackages>spring-boot-project</installAppPackages>
+					<include>minify,runnable</include>
+					<packageName>GSSpringBootApp</packageName>
+				</configuration>
+				<executions>
+					<execution>
+						<id>package-server</id>
+						<phase>package</phase>
+						<goals>
+							<goal>install-feature</goal>
+							<goal>deploy</goal>
+							<goal>package</goal>
+						</goals>
+					</execution>
+				</executions> -->
 			</plugin>
 		</plugins>
 	</build>
