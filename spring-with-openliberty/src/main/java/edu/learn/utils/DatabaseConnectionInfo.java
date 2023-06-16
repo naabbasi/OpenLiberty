@@ -20,6 +20,7 @@ public class DatabaseConnectionInfo {
     private String driverClassName;
     @NotBlank
     private String dialect;
+    private String jndiName;
     @NotNull
     private Integer port;
 }
